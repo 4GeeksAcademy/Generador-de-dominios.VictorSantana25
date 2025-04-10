@@ -1,11 +1,25 @@
-import "bootstrap";
-import "./style.css";
+document.addEventListener("DOMContentLoaded", () => {
+  const domainElement = document.getElementById("domain");
+
+  const pronoun = ['my', 'your', 'their'];
+  const adj = ['cool', 'strange', 'epic'];
+  const noun = ['project', 'idea', 'engine'];
+  const extension = '.com';
+
+  const domains = [];
+
+  for (let p of pronoun) {
+    for (let a of adj) {
+      for (let n of noun) {
+        domains.push(`${p}${a}${n}${extension}`);
+      }
+    }
+  }
 
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
-
-window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
-};
+  domainElement.innerHTML = domains.map(domain => `
+    <div class="col-6 mb-2">
+      <li>${domain}</li>
+    </div>
+  `).join('');
+});
